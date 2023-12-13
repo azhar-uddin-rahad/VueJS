@@ -6,7 +6,17 @@
   <BasicEvent></BasicEvent>
   <MakeInputForms></MakeInputForms>
   <ToggleButton></ToggleButton>
-  <ChildComponents></ChildComponents>
+  <ChildComponents name="azhar uddin rahad" :user='user' :sendData='sendData'></ChildComponents>
+  <ul >
+    <li v-for="(studentData,index) in studentInfo" :key="index">
+      <DynamicList :items="studentData" :getData="getData"></DynamicList>
+    </li>
+   
+  </ul>
+  <ClassBinding></ClassBinding>
+  
+
+
 </template>
 
 <script>
@@ -16,6 +26,8 @@ import BasicEvent from './components/BasicEvent'
 import MakeInputForms from './components/MakeInputForms'
 import ToggleButton from './components/ToggleButton'
 import ChildComponents from './components/ChildComponents'
+import DynamicList from './components/DynamicList.vue'
+import ClassBinding from './components/ClassBinding.vue'
 export default {
   name: 'App',
   components: {
@@ -24,8 +36,29 @@ export default {
     BasicEvent,
     MakeInputForms,
     ToggleButton,
-    ChildComponents
-  }
+    ChildComponents,
+    DynamicList,
+    ClassBinding
+    },
+  data(){
+    return{
+      user:{name: "azhar1",email:'aur@gmail.com '},
+      studentInfo:[
+       { name:'biplob', email:'biplob@gmail.com'},
+       { name:'shakib', email:'shikb@gmail.com'},
+       { name:'jobear', email:'jobear@gmail.com'},
+       { name:'mizan', email:'mizan@gmail.com'},
+      ]
+    }
+  },
+  methods: {
+    sendData(){
+      console.log("parent function called")
+    },
+    getData(name){
+     alert(name)
+    }
+  },
 }
 </script>
 
